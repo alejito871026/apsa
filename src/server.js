@@ -39,8 +39,7 @@ app.use(express.static(path.join(__dirname,'public')));
 
 app.set('port', process.env.PORT || 9000);
 
-host = process.env.HOST || '0.0.0.0';
 
-app.listen(app.get('port'),host,() => {
+app.listen(app.get('port'),() => {
     console.log('server on port', app.get('port'));
 });
