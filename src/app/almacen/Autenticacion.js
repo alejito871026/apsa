@@ -22,7 +22,6 @@ export default {
     actions: {
         LOGIN : (({commit},payload)=>{
             return new Promise ((resolve,  reject) => {
-                console.log(payload)
                 axios.post('/api/login/iniSesion', payload)
                 .then(res =>{
                     if(res.status === 200){

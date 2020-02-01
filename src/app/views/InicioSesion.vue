@@ -86,7 +86,6 @@ export default {
             this.$router.push("/creditos");
         },
         err => {
-          alert('error')
           alert(err.response.data.error);
         }
       );
