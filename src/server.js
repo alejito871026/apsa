@@ -8,7 +8,7 @@ const session = require('express-session')
 
 const app = express();
 
-require('./database') 
+const database = require('./database') 
 
 
 //midelwares
