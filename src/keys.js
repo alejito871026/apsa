@@ -1,6 +1,6 @@
 module.exports = {
     mongodb:{
-        uri :'mongodb://localhost:27017/apsa',
+        uri :'mongodb+srv://apsaConvenios:<password>@conveniosapsa-tjlra.mongodb.net/test?retryWrites=true&w=majority',
         options:{
             useNewUrlParser:true, useCreateIndex: true, useUnifiedTopology: true
         }   
