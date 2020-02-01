@@ -11,6 +11,7 @@ const app = express();
 require('./database') 
 
 
+
 //midelwares
 app.use(morgan('dev'));
 app.use(cors());
@@ -19,6 +20,7 @@ app.use(express.urlencoded({extended:true}));
 
 app.use(flash())
 app.use(passport.initialize());
+
 
 //rutas 
 //app.get('/',function(req, res){
@@ -35,10 +37,10 @@ app.use(history())
 app.use(express.static(path.join(__dirname,'public')));
 
 
-app.set('port', process.env.PORT ||9000);
+app.set('port', process.env.PORT || 9000);
 
+host = process.env.HOST || '0.0.0.0';
 
-
-app.listen(app.get('port'),() => {
+app.listen(app.get('port'),host,() => {
     console.log('server on port', app.get('port'));
 });
