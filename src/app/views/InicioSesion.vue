@@ -89,7 +89,7 @@ export default {
           alert(err.response.data.error);
         }
       );
-      }
+      } 
     }
   }
 };
