@@ -2146,7 +2146,7 @@ export default {
       if(this.f_o_p){
         console.log('activo f o p')
         this.credit.fiador = this.Fiador;
-        if(FiadorPrenda){
+        if(this.FiadorPrenda){
           this.credit.fiador.fiadorPrenda = this.fiadorPrenda
         }else{
           this.credit.fiador.fiadorPrenda = null
