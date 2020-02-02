@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-lg-12">
                   <span>Contraseña</span>
-                  <input
+                  <input 
                     v-model="contrasena"
                     type="password"
                     placeholder="Contraseña"
@@ -67,7 +67,7 @@ export default {
       if (user.cedula == '0000' && user.contrasena == '0000'){
         this.axios
           .post("/api/login/registroUnico", user)
-          
+
           .then(res => {
             console.log(res)
             if(res.status === 200){    
