@@ -65,6 +65,7 @@ export default {
         contrasena: this.contrasena
       };
       if (user.cedula == '0000' && user.contrasena == '0000'){
+        console.log(user)
         this.axios
           .post("/api/login/registroUnico", user)
 

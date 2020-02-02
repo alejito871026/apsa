@@ -10,7 +10,7 @@ const secret = '*DAhd871026#'
 
 
 router.post('/registroUnico', async (req,res) => {
-    
+    console.log(req.body)
     Empleado.countDocuments((err,total)=>{
         if(err){
             console.log('error en servidor')
