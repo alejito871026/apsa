@@ -57,8 +57,10 @@ router.post('/registro', async (req, res)=>{
     });
 });
 router.post('/iniSesion',async( req, res, next)=>{
+    console.log(req.body)
     const cedula = req.body.cedula
     const contrasena = req.body.contrasena
+    console.log(Empleado)
         Empleado.findOne({cedulaE:cedula},(err, user)=> {
             if(err){
                 console.log('error en servidor')
