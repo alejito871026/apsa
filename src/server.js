@@ -36,9 +36,12 @@ app.use(history())
 app.use(express.static(path.join(__dirname,'public')));
 
 
-app.set('port', process.env.PORT || 9000);
+const host = process.env.HOST || '0.0.0.0';
+const port  = process.env.PORT || 9000
+
+//app.set('port', process.env.PORT || 9000);
 
 
-app.listen(app.get('port'),() => {
-    console.log('server on port', app.get('port'));
+app.listen(port,host,() => {
+    console.log('server on port',port);
 });
