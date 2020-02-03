@@ -1165,7 +1165,7 @@
                         required
                         @keyup="quitarBoton()"
                         class="form-control"
-                        v-model="infoLabFI.nombreEmpresa"
+                        v-model="infoLabfiadorPrenda.nombreEmpresa"
                       />
                     </div>
                     <div class="input-group mb-3">
@@ -1177,7 +1177,7 @@
                         required
                         @keyup="quitarBoton()"
                         class="form-control"
-                        v-model="infoLabFI.ciudadEmpresa"
+                        v-model="infoLabfiadorPrenda.ciudadEmpresa"
                       />
                     </div>
                     <div class="input-group mb-3">
@@ -1189,7 +1189,7 @@
                         required
                         @keyup="quitarBoton()"
                         class="form-control"
-                        v-model="infoLabFI.cargoEmpleado"
+                        v-model="infoLabfiadorPrenda.cargoEmpleado"
                       />
                     </div>
                     <div class="input-group mb-3">
@@ -1201,7 +1201,7 @@
                         required
                         @keyup="quitarBoton()"
                         class="form-control"
-                        v-model="infoLabFI.salarioEmpleado"
+                        v-model="infoLabfiadorPrenda.salarioEmpleado"
                         v-money="money"
                       />
                     </div>
@@ -1216,7 +1216,7 @@
                         required
                         @keyup="quitarBoton()"
                         class="form-control"
-                        v-model="infoLabFI.direccionEmpresa"
+                        v-model="infoLabfiadorPrenda.direccionEmpresa"
                       />
                     </div>
                     <div class="input-group mb-3">
@@ -1228,7 +1228,7 @@
                         required
                         @keyup="quitarBoton()"
                         class="form-control"
-                        v-model="infoLabFI.telefonoEmpresa"
+                        v-model="infoLabfiadorPrenda.telefonoEmpresa"
                       />
                     </div>
                     <div class="input-group mb-3">
@@ -1240,7 +1240,7 @@
                         required
                         @keyup="quitarBoton()"
                         class="form-control"
-                        v-model="infoLabFI.correoLaboral"
+                        v-model="infoLabfiadorPrenda.correoLaboral"
                       />
                     </div>
                     <div class="input-group mb-3">
@@ -1252,7 +1252,7 @@
                         required
                         @keyup="quitarBoton()"
                         class="form-control"
-                        v-model="infoLabFI.otrosIngresosEmpleado"
+                        v-model="infoLabfiadorPrenda.otrosIngresosEmpleado"
                         v-money="money"
                       />
                     </div>
@@ -1746,9 +1746,9 @@ export default {
       InfolabfiadorPrenda : false,  
       infoLabF : false,
       fiadorPrenda: new fiadorr(),
+      infolabfiadorPrenda: new infolaboral(),
       infoLabFiador: new infolaboral(),
       infoLab: new infolaboral(),
-      infoLabFI : new infolaboral(),
       cancelPrenda: false,
       pagoUnico: false,
       emplee: "empleado",
@@ -2151,7 +2151,7 @@ export default {
         }else{
           this.credit.fiador.fiadorPrenda = null
         }
-        this.credit.fiador.infolabfiadorPrenda = this.infolabFI
+        this.credit.fiador.infolabfiadorPrenda = this.infolabfiadorPrenda
       }else{
         this.credit.fiador = null;
       }
