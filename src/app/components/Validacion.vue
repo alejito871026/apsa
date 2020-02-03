@@ -123,7 +123,7 @@
                     v-model="credit.servicio"
                     required
                     class="custom-select"
-                    @change="quitarBoton(), validService()"
+                    @change="quitarBoton(), validService(), laborFiador()"
                   >
                     <option>Soat</option>
                     <option>Tecnomecanica</option>
@@ -278,36 +278,14 @@
             </div>
             <br />
             <div class="bg-white text-center row border p-4">
-              <br />
-              <div class="custom-control custom-radio col-md-6 p-4">
-                <input
-                  type="radio"
-                  class="custom-control-input"
-                  id="tres"
-                  name="tres"
-                  value="tres"
-                  @click="tEmple='tres', emple()"
-                  v-model="tEmple"
-                />
-                <label class="custom-control-label" for="tres">
-                  <h4>Si es empleado</h4>
-                </label>
+              <br/>
+              <div class="form-group col-md-12">
+                <div class="btn btn-primary btn-block" @click="infoLabF = false, emplee='empleado',  indepp= false, btn = true, laborFiador()" v-if="tEmple">
+                  Si es empleado</div>                  
+                <div class="btn btn-primary btn-block" @click="emplee=false,  indepp= 'independiente', btn = true,laborFiador()" v-if="tEmple">
+                  Si es independiente</div>
               </div>
-              <div class="custom-control custom-radio col-md-6 p-4">
-                <input
-                  type="radio"
-                  class="custom-control-input"
-                  id="cuatro"
-                  name="cuatro"
-                  value="cuatro"
-                  @click="tEmple='cuatro', emple()"
-                  v-model="tEmple"
-                />
-                <label class="custom-control-label" for="cuatro">
-                  <h4>Si es independiente</h4>
-                </label>
-              </div>
-              <br />
+              <br/>
               <div class="btn btn-danger btn-block" v-if="btn" @click="emplee=false, indepp= false, btn=false">Quitar informacion Empleado</div>
               <div class="btn btn-success btn-block" v-if="!btn">Para agregar informacion de empleo presione si es empleado o independiente</div>
             </div>
@@ -1765,7 +1743,7 @@ export default {
       rfpersonaldos: new rf(),
       rfpersonaltres: new rf(),
       checked: "",
-      tEmple: "tres",
+      tEmple: true,
       fiador: true,
       crearCre: false,
       botoon: true,
@@ -1835,7 +1813,6 @@ export default {
         (this.fiador = true), (this.prenda = false);
         this.Fiador = new fiadorr();
       }
-      this.laborFiador()
     },
     fetchCreditos() {
       //const uri = "http://localhost:3000/api/clientes"
@@ -1964,25 +1941,14 @@ export default {
       }
     },
     laborFiador(){
-      if(this.credit.servicio !=undefined  && this.credit.servicio != 'pignoracion' && this.tEmple == 'cuatro'){
+      if(this.credit.servicio !=undefined  && this.credit.servicio != 'pignoracion' && this.emplee != 'empleado'){
+          alert('Recuerde que debera agregar informacion laboral del fiador ya que el deudor no cuenta con trabajo y el credito no es sobre prenda o pignoracion ')
         this.infoLabF = true
-        alert('Recuerde que debera agregar informacion laboral del fiador ya que el deudor no cuenta con trabajo y el credito no es sobre prenda o pignoracion ')
       }else{
         this.infoLabF = false
       }
     },
-    emple() {
-      var r = this.tEmple;
-      if (r == "tres") {
-        (this.emplee = "empleado"), (this.indepp = false);
-        this.btn = true
-      }
-      if (r == "cuatro") {
-        (this.emplee = false), (this.indepp = "independiente");
-        this.btn = true 
-      }
-      this.laborFiador()
-    },
+    
     agregar() {
       (this.botoon = false),
         (this.crearCre = true),
