@@ -301,7 +301,7 @@
               <div class="btn btn-success btn-block" v-if="!btn">Para agregar informacion de empleo presione si es empleado o independiente</div>
             </div>
             <br/>
-            <div class="row p-4 bg-white">
+            <div class="row p-4 bg-white" v-if="emplee || indepp">
               <div class="col-md-12" v-if="emplee">
                 <h2 class="text-center">Informacion laboral {{emplee}}</h2>
               </div>
@@ -310,7 +310,7 @@
               </div>
               <br />
               <div class="col-md-6 p-4">
-                <div class="input-group mb-3">
+                <div class="input-group mb-3" >
                   <div class="input-group-prepend" v-if="emplee">
                     <label class="input-group-text">Nombre de la empresa</label>
                   </div>

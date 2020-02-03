@@ -401,6 +401,10 @@
         <div class="progress-bar progress-bar-striped bg-success" role="progressbar" v-bind:style="m">{{fallas}}%></div>
       </div> 
       <br>
+      <div class="btn btn-primary btn-block" v-if="aceptar" @click="validar(user.codigo)">Aprovar</div>
+      <br>
+      <div class="btn btn-primary btn-block" >Negar</div>
+      <br>
       <div class="btn btn-warning btn-block" @click="borrar(100), borrarFallas(100), infolaboralFP=false, che1=true,che2=true,che3=true,che5=true,che5=true, vercred=false, che=[true,true,true,true,true,true], sinRespuesta=[true,true,true,true,true,true], quitar=[true,true,true,true,true,true], volverLlamar=[false,false,false,false,false,false]">Volver</div>
     </div>  
       <br><br>
@@ -455,8 +459,9 @@ export default {
         prendaa: false,
         fiadorr : false,
         independiente : false,
-        progres :  0,
+        progres : 0,
         fallas:0,
+        aceptar:false,
         n: {
           width: "0%",
           valuemin:"0",
@@ -487,7 +492,13 @@ mounted() {
         }
     });
 },
-
+updated(){
+  if(this.progres === 100){
+    this.aceptar = true
+  }else{
+    this.aceptar = false
+  }
+},
  methods:{
      fetchCreditos() {
       //const uri = "http://localhost:3000/api/clientes"
@@ -498,6 +509,11 @@ mounted() {
         })
         .catch(err => console.log(err));
     },
+
+
+validar(n) {
+  console.log(n)
+},  
   aumentar(x){
     this.progres = this.progres + x
     if(this.progres>100){
@@ -510,7 +526,6 @@ mounted() {
           valuemax:"100",
           valuenow:this.progres
         }
-        console.log(this.n)
   },
   borrar(x){
     this.progres = this.progres - x
@@ -531,7 +546,6 @@ mounted() {
           valuemax:"100",
           valuenow:this.progres
         }
-        console.log(this.n)
   },
   aumentarFallas(x){
     this.fallas = this.fallas + x
@@ -545,7 +559,6 @@ mounted() {
           valuemax:"100",
           valuenow:this.fallas
         }
-        console.log(this.m)
   },
   borrarFallas(x){
     this.fallas = this.fallas - x
@@ -565,7 +578,6 @@ mounted() {
           valuemax:"100",
           valuenow:this.fallas
         }
-        console.log(this.m)
   },
   check(){
     
@@ -595,8 +607,6 @@ mounted() {
       this.axios
         .post("/api/creditos/verCredito", idd)
         .then(res => {
-            console.log('esta es la data')
-            console.log(res.data)
           this.verCred = res.data;
           this.valor = 10
           let y = this.valor
@@ -652,7 +662,6 @@ mounted() {
     verFiadorPrenda(n){
         this.axios.post("/api/creditos/FiadorPrenda", n)
           .then(res => {
-              console.log(res.data)
             this.fiador = res.data;
             if(this.fiador.fiador_o_prenda == 'fiador'){
               this.valor2 = 20
