@@ -301,15 +301,21 @@
               <div class="btn btn-success btn-block" v-if="!btn">Para agregar informacion de empleo presione si es empleado o independiente</div>
             </div>
             <br/>
-            <div class="row p-4 bg-white" v-if="emplee">
-              <div class="col-md-12">
+            <div class="row p-4 bg-white">
+              <div class="col-md-12" v-if="emplee">
                 <h2 class="text-center">Informacion laboral {{emplee}}</h2>
+              </div>
+              <div class="col-md-12" v-if="indepp">
+                <h2 class="text-center">Informacion laboral {{indepp}}</h2>
               </div>
               <br />
               <div class="col-md-6 p-4">
                 <div class="input-group mb-3">
-                  <div class="input-group-prepend">
+                  <div class="input-group-prepend" v-if="emplee">
                     <label class="input-group-text">Nombre de la empresa</label>
+                  </div>
+                  <div class="input-group-prepend" v-if="indepp">
+                    <label class="input-group-text">Actividad o negocio</label>
                   </div>
                   <input
                     type="text"
@@ -331,8 +337,8 @@
                     v-model="infoLab.ciudadEmpresa"
                   />
                 </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
+                <div class="input-group mb-3" v-if="emplee">
+                  <div class="input-group-prepend" >
                     <label class="input-group-text">Cargo</label>
                   </div>
                   <input
@@ -382,7 +388,7 @@
                     v-model="infoLab.telefonoEmpresa"
                   />
                 </div>
-                <div class="input-group mb-3">
+                <div class="input-group mb-3" v-if="emplee">
                   <div class="input-group-prepend">
                     <label class="input-group-text">Correo laboral</label>
                   </div>
@@ -392,90 +398,6 @@
                     @keyup="quitarBoton()"
                     class="form-control"
                     v-model="infoLab.correoLaboral"
-                  />
-                </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <label class="input-group-text">Otros Ingresos</label>
-                  </div>
-                  <input
-                    type="text"
-                    required
-                    @keyup="quitarBoton()"
-                    class="form-control"
-                    v-model="infoLab.otrosIngresosEmpleado"
-                    v-money="money"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="row p-4 bg-white" v-if="indepp">
-              <div class="col-md-12">
-                <h2 class="text-center">Informacion laboral {{indepp}}</h2>
-              </div>
-              <br />
-              <div class="col-md-6 p-4">
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <label class="input-group-text">Actividad o negocio</label>
-                  </div>
-                  <input
-                    type="text"
-                    required
-                    @keyup="quitarBoton()"
-                    class="form-control"
-                    v-model="infoLab.nombreEmpresa"
-                  />
-                </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <label class="input-group-text">Ciudad</label>
-                  </div>
-                  <input
-                    type="text"
-                    required
-                    @keyup="quitarBoton()"
-                    class="form-control"
-                    v-model="infoLab.ciudadEmpresa"
-                  />
-                </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <label class="input-group-text">Salario</label>
-                  </div>
-                  <input
-                    type="text"
-                    required
-                    @keyup="quitarBoton()"
-                    class="form-control"
-                    v-model="infoLab.salarioEmpleado"
-                    v-money="money"
-                  />
-                </div>
-              </div>
-              <div class="col-md-6 p-4">
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <label class="input-group-text">Direccion</label>
-                  </div>
-                  <input
-                    type="text"
-                    required
-                    @keyup="quitarBoton()"
-                    class="form-control"
-                    v-model="infoLab.direccionEmpresa"
-                  />
-                </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <label class="input-group-text">Telefono</label>
-                  </div>
-                  <input
-                    type="text"
-                    required
-                    @keyup="quitarBoton()"
-                    class="form-control"
-                    v-model="infoLab.telefonoEmpresa"
                   />
                 </div>
                 <div class="input-group mb-3">
