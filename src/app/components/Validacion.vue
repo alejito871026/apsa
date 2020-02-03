@@ -1764,9 +1764,11 @@ export default {
       var tipf = this.credit.frecuencia;
       if (tipf == "quincenal") {
         this.hoy = new Date().getDate();
-        this.hoy = this.hoy + 7;
         this.mes = new Date().getMonth();
+        console.log(tipf +' mes1 '+this.mes+' hoy1 '+this.hoy)
+        this.hoy = this.hoy + 7;
         this.mes = this.mes + 1;
+        console.log(tipf +' mes2 '+this.mes+' hoy2 '+this.hoy)
         if (this.mes > 12) {
           this.mes = 1;
         }
@@ -1783,6 +1785,8 @@ export default {
           this.pfecha = this.pfecha - 30;
           this.hh = true;
           this.mes2 = this.mes + 1;
+        }else{
+          this.mes2 = this.mes
         }
         if (this.mes == 2 && this.pfecha > 28) {
           this.pfecha = this.pfecha - 28;
@@ -1792,7 +1796,6 @@ export default {
         if (this.mes2 > 12) {
           this.mes2 = 1;
         }
-
         this.quincenal = true;
       } else {
         this.quincenal = false;
@@ -1881,7 +1884,6 @@ export default {
         this.infoLabF = false
       }
     },
-    
     agregar() {
       (this.botoon = false),
         (this.crearCre = true),
@@ -1976,20 +1978,20 @@ export default {
     },
     creditoAgregar() {
       if (this.credit.frecuencia == "quincenal") {
+        console.log(this.credit.frecuencia)
         if (this.hoy <= this.pfecha) {
           if (
-            this.credit.fDiaPago <= this.hoy ||
-            this.credit.fDiaPago >= this.pfecha
-          ) {
+            this.credit.fDiaPago < this.hoy ||
+            this.credit.fDiaPago > this.pfecha
+          ){
+            alert('fecha de pago establecida esta fuera del rango permitido')
             return;
           } else {
             this.messs = this.mes;
           }
         } else {
-          if (
-            this.credit.fDiaPago <= this.pfecha ||
-            this.credit.fDiaPago >= this.hoy
-          ) {
+          //cuando this.hoy sea mayor que this.pfecha
+          if (this.credit.fDiaPago <= this.pfecha || this.credit.fDiaPago >= this.hoy) {
             if (this.credit.fDiaPago <= this.pfecha) {
               this.messs = 1 + this.mes;
               if (this.messs > 12) {
@@ -2001,6 +2003,7 @@ export default {
               this.messs = this.mes;
             }
           } else {
+            alert('fecha de pago establecida esta fuera del rango permitido')
             return;
           }
         }
@@ -2070,10 +2073,8 @@ export default {
       }else{
         this.credit.infoLab = "";
       }
-      
       this.credi = this.credit;
-      console.log(this.credi);
-      console.log(this.f_o_p)
+      console.log(this.credi)
       return this.credi;
     },
     quitarBoton() {
@@ -2085,7 +2086,6 @@ export default {
     },
     guardarCredito() {
       let fiador = this.credi.fiador;
-      console.log(this.credi.fiador)
       if(fiador == null){
         this.agregarPagares();
       }else{
