@@ -280,10 +280,21 @@
             <div class="bg-white text-center row border p-4">
               <br/>
               <div class="form-group col-md-12">
-                <div class="btn btn-primary btn-block" @click="infoLabF = false, emplee='empleado',  indepp= false, btn = true, laborFiador()" v-if="tEmple">
-                  Si es empleado</div>                  
-                <div class="btn btn-primary btn-block" @click="emplee=false,  indepp= 'independiente', btn = true,laborFiador()" v-if="tEmple">
+                <div class="btn-group col-md-12">
+                <div class="btn btn-primary btn-block" @click="infoLabF = false, emplee='empleado', indepp= false, btn = true, laborFiador()" v-if="tEmple">
+                  Si es empleado</div>
+                  <div class="btn btn-warning" v-if="indepp"><i class="fa fa-times"></i></div>
+                  <div class="btn btn-success" v-if="emplee"><i class="fa fa-check"></i></div>
+                </div>   
+              </div>   
+                <br> 
+                <div class="form-group col-md-12">
+                <div class="btn-group col-md-12">
+                  <div class="btn btn-primary btn-block" @click="emplee=false,  indepp= 'independiente', btn = true,laborFiador()" v-if="tEmple">
                   Si es independiente</div>
+                  <div class="btn btn-warning" v-if="emplee"><i class="fa fa-times"></i></div>
+                  <div class="btn btn-success" v-if="indepp"><i class="fa fa-check"></i></div>
+                </div>                 
               </div>
               <br/>
               <div class="btn btn-danger btn-block" v-if="btn" @click="emplee=false, indepp= false, btn=false">Quitar informacion Empleado</div>
