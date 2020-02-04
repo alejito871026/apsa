@@ -435,7 +435,6 @@ export default {
  name: 'solicitudes',
  data () {
      return {
-       valor4:0,
        valor:0,
        valor2:0,
        valor3:8,
