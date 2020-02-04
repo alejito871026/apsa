@@ -689,7 +689,6 @@ validar(n) {
                     }else{
                       this.valor3 = 8
                     }
-                    
                     this.valor2 = 6
                   }else{
                     this.valor3 = 8
