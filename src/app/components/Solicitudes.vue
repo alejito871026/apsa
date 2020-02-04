@@ -672,6 +672,8 @@ validar(n) {
               this.prendaa = false
               if(this.fiador.infolabfiadorPrenda != null){
                 infolaboralFiador = true
+              }else{
+                infolaboralFiador = true
               }
             }else{
               if(this.fiador.fiador_o_prenda == 'prenda'){
