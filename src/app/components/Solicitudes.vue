@@ -341,10 +341,13 @@
                       <div class="btn btn-danger" v-if="!che4"  @click="borrar(6), che4=true">Quitar validacion <i class="fa fa-trash"></i></div>
                     </div>
                   </div>
-                  <div id="infolaboralfiadorPrenda" v-if="infolaboralFP">
+                  <div id="infolaboralfiadorPrenda" v-if="infolaboralFP || infolaboralFiador">
                     <div class="card">
-                        <div class="card-header border">
+                        <div class="card-header border" v-if="infolaboralFP">
                             <h2 class="text-center">Informacion Laboral fiador del credito con prenda</h2>
+                        </div>
+                        <div class="card-header border" v-if="infolaboralFiador">
+                            <h2 class="text-center">Informacion Laboral fiador</h2>
                         </div>
                         <div class="card-body border">
                             <div class="row">
@@ -437,6 +440,7 @@ export default {
        valor3:8,
        infolaboral:true,
        infolaboralFP:false,
+       infolaboralFiador:false,
        ref : true,
        fiad: true,
        che:[true,true,true,true,true,true],
@@ -593,7 +597,6 @@ validar(n) {
       }
     },
     refrescar() {
-      
       this.fetchCreditos();
       this.pros.respuesta.respuesta = 0;
     },
@@ -667,6 +670,9 @@ validar(n) {
               this.valor2 = 20
               this.fiadorr = true
               this.prendaa = false
+              if(this.fiador.infolabfiadorPrenda != null){
+                infolaboralFiador = true
+              }
             }else{
               if(this.fiador.fiador_o_prenda == 'prenda'){
                     this.valor2 = 10
