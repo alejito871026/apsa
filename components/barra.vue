@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" variant="dark">
+    <b-navbar toggleable="lg" type="dark" variant="dark"> 
         <b-navbar-nav>
           <router-link to="/" class="nav-link text-white"><h5>Convenios-APSA</h5></router-link>
         </b-navbar-nav>
