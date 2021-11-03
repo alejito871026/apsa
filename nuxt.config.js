@@ -48,7 +48,7 @@ export default {
     sockets: [ // Required
       { // At least one entry is required
         name: 'Listados',
-        url:'https://apsaconvenios.herokuapp.com/', 
+        url:'https://pruebanodeaa.herokuapp.com/', 
         default: true,
       }
     ],
@@ -85,7 +85,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'https://apsaconvenios.herokuapp.com/server',
+    baseURL: 'https://pruebanodeaa.herokuapp.com/server',
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
