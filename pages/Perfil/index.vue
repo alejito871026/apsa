@@ -1,0 +1,26 @@
+<template>
+  <div class="Perfil">
+    <barra-logeado/>
+    <div class="bg-primary text-white text-center p-4">
+      <h1><strong>PERFIL</strong></h1>
+    </div>
+  </div>
+</template>
+
+<script>
+const f = require ("../../funciones/funciones.js")
+export default {
+    middleware: 'auth',
+    async asyncData({$axios,app}){
+        let logueado = await f.validarUsuario($axios)
+        if(logueado.access===false){
+            app.$auth.logout()
+            app.router.push('/inicioSesion')
+        }        
+    },
+}
+</script>
+
+<style>
+
+</style>
