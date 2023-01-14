@@ -686,8 +686,7 @@ async function creditos (){
     const cred  = await Creditos.find({"estado":"activo", "estadoInterno":"Entregado","Fp":{"$gt" :start,"$lte" : end}}).populate('cliente')
     return cred
 }
-const job = schedule.scheduleJob('24 19 07 * * * ', function(){
-    console.log('The answer to life, the universe30!');
+const job = schedule.scheduleJob('0 0 8 * * * ', function(){
     creditos().then(val => {
         paraMensajes(val)            
     })
